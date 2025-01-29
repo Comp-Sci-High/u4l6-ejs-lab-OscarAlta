@@ -68,7 +68,7 @@ app.set('view engine', 'ejs')
 
 
 app.use((req, res, next) => {
-  console.log(req.method + " " + req.path)
+  console.log(req.method + "/" + req.path)
   next()
 })
 
@@ -106,7 +106,9 @@ app.get("/item/0",(req, res)=>{
 
 // Task 6: Plug in the values in product.ejs to get the page working
 // Extra credit: modify the /item/0 route handler to have dynamic path parameter and return any item's data
-app.get("/mens",(req, res)=>{ 
+app.get("/item/:id",(req, res)=>{ 
+  const itemId = req.params.id;
+  const item = inventory
   res.render("product.ejs", inventory[0]);
   
   
